@@ -1,21 +1,28 @@
 import React from "react";
 import "./App.css";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import Feed from "./Feed";
+import Header from "./Header/Header";
+import Sidebar from "./Body/Sidebar/Sidebar";
+import Feed from "./Body/Feed/Feed";
+import Widget from "./Body/Widget/Widget";
+import Login from "./Login/Login";
+import { useStateValue } from "./StateProvider";
 
 function App() {
+  const [{ user }] = useStateValue();
   return (
     <div className="app">
-      <Header></Header>
-
-      {/* Header */}
-      <div className="app__body">
-        <Sidebar></Sidebar>
-        <Feed></Feed>
-        {/* Widgets */}
-      </div>
-
+      {!user ? (
+        <Login />
+      ) : (
+        <>
+          <Header />
+          <div className="app__body">
+            <Sidebar />
+            <Feed />
+            <Widget />
+          </div>
+        </>
+      )}
     </div>
   );
 }
