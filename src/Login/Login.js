@@ -24,7 +24,6 @@ function Login() {
   return (
     <div className="login">
       <div className="login__logo">
-        <img src="../../public/logo192.png" alt="" />
         <img src={facebookLogo} alt="" />
       </div>
       <Button type="submit" onClick={signIn}>
